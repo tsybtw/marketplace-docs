@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <script type="module" crossorigin src="/assets/entry.client-L5SQJEl7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/entry-CRAUTLW1.css">
+    <title data-rh="true">Авторизація - Zudoku</title>
+<meta data-rh="true" name="description" content="API використовує JWT Bearer токени для автентифікації користувачів."/>
+<link data-rh="true" rel="icon" href="https://cdn.zudoku.dev/logos/favicon.svg"/>
+
+
+    <link rel="preconnect" href="https://cdn.zudoku.dev/">
+  </head>
+  <body>
+    <div id="root"><script>((e, s, a, d, m, c, u, h) => {
+  let l = document.documentElement, b = ["light", "dark"];
+  function f(o) {
+    (Array.isArray(e) ? e : [e]).forEach((y) => {
+      let S = y === "class", k = S && c ? m.map((v) => c[v] || v) : m;
+      S ? (l.classList.remove(...k), l.classList.add(o)) : l.setAttribute(y, o);
+    }), C(o);
+  }
+  function C(o) {
+    h && b.includes(o) && (l.style.colorScheme = o);
+  }
+  function i() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  if (d) f(d);
+  else try {
+    let o = localStorage.getItem(s) || a, y = u && o === "system" ? i() : o;
+    f(y);
+  } catch {
+  }
+})("class","theme","system",null,["light","dark"],null,true,true)</script><header class="sticky lg:top-0 z-10 bg-background/80 backdrop-blur w-full"><style>:root { --banner-height: 0px; }</style><div class="border-b"><div class="max-w-screen-2xl mx-auto flex relative items-center justify-between px-4 lg:px-8 h-[--top-header-height] border-transparent"><div class="flex"><a href="/" data-discover="true"><div class="flex items-center gap-3.5"><img src="https://cdn.zudoku.dev/logos/zudoku-logo-full-light.svg" style="width:130px" class="h-10 dark:hidden" loading="lazy"/><img src="https://cdn.zudoku.dev/logos/zudoku-logo-full-dark.svg" style="width:130px" class="h-10 hidden dark:block" loading="lazy"/><span class="font-semibold text-2xl"></span></div></a></div><div class="absolute inset-x-0 justify-center items-center hidden lg:flex w-full pointer-events-none"></div><div class="flex items-center gap-8"><div class="flex lg:hidden justify-self-end"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-«R7jl9»" data-state="closed" class="lg:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><div class="absolute w-0 left-0 right-0 bottom-[-1px] h-[2px] bg-primary transition-all duration-300 ease-in-out" style="opacity:0;width:0"></div></div><div class="hidden lg:flex items-center justify-self-end text-sm gap-2"><button class="not-prose inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9"></button></div></div></div></div><div class="border-b hidden lg:block"><div class="max-w-screen-2xl mx-auto border-transparent"><style>:root { --top-nav-height: 0px; }</style></div></div></header><div class="grid max-w-screen-2xl w-full lg:mx-auto [&amp;:has(&gt;:only-child)]:grid-rows-1 grid-rows-[0_min-content_1fr] lg:grid-rows-[min-content_1fr] grid-cols-1 lg:grid-cols-[var(--side-nav-width)_1fr]"><!--$--><main data-pagefind-body="true" class="px-4 lg:pe-8 lg:px-8 col-span-full"><div class="grid grid-cols-1 xl:grid-cols-[--sidecar-grid-cols] gap-8 justify-between" data-pagefind-filter="section:markdown" data-pagefind-meta="section:markdown"><div class="prose dark:prose-invert prose-neutral max-w-full xl:w-full xl:max-w-3xl flex-1 flex-shrink pt-[--padding-content-top]"><header><h1 class="group relative text-4xl font-extrabold" id="avtorizatsiya"><a href="#avtorizatsiya" class="before:content-[&#x27;#&#x27;] no-underline absolute text-primary -start-[0.8em] pe-2.5 opacity-0 group-hover:opacity-50 hover:!opacity-100 transition-opacity duration-200" aria-label="Link to avtorizatsiya">​</a>Авторизація</h1></header><h1 class="group relative text-4xl font-extrabold" id="авторизація"><a href="#авторизація" class="before:content-[&#x27;#&#x27;] no-underline absolute text-primary -start-[0.8em] pe-2.5 opacity-0 group-hover:opacity-50 hover:!opacity-100 transition-opacity duration-200" aria-label="Link to авторизація">​</a>Авторизація</h1>
+<p>API використовує JWT Bearer токени для автентифікації користувачів.</p>
+<h2 class="group relative text-2xl font-bold" id="отримання-токену"><a href="#отримання-токену" class="before:content-[&#x27;#&#x27;] no-underline absolute text-primary -start-[0.8em] pe-2.5 opacity-0 group-hover:opacity-50 hover:!opacity-100 transition-opacity duration-200" aria-label="Link to отримання-токену">​</a>Отримання токену</h2>
+<p>Токен отримується після успішної авторизації користувача через систему автентифікації.</p>
+<h3 class="group relative text-xl font-semibold" id="приклад-запиту-на-авторизацію"><a href="#приклад-запиту-на-авторизацію" class="before:content-[&#x27;#&#x27;] no-underline absolute text-primary -start-[0.8em] pe-2.5 opacity-0 group-hover:opacity-50 hover:!opacity-100 transition-opacity duration-200" aria-label="Link to приклад-запиту-на-авторизацію">​</a>Приклад запиту на авторизацію</h3>
+<pre class="not-prose my-4"><div class="code-block-wrapper relative group bg-muted/50 rounded-md"><div class="code-block text-sm not-prose scrollbar overflow-x-auto scrollbar p-4"><code class="not-inline">POST /auth/login
+Content-Type: application/json
+
+{
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;password&quot;: &quot;password123&quot;
+}
+Відповідь
+json{
+  &quot;access_token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;expires_in&quot;: 3600
+}
+Використання токену
+В HTTP заголовках
+Додайте токен до заголовку Authorization:
+httpAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+В SDK
+typescriptimport { Configuration, ProductsApi } from &#x27;marketplace-api-client&#x27;;
+
+const config = new Configuration({
+  basePath: &#x27;https://marketplace-api.com/v1&#x27;,
+  accessToken: &#x27;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&#x27;
+});
+
+const api = new ProductsApi(config);
+Динамічне оновлення токену
+typescript// Оновлення токену в існуючій конфігурації
+config.accessToken = &#x27;новий-jwt-токен&#x27;;
+
+// Або створення нової конфігурації
+const newConfig = new Configuration({
+  basePath: &#x27;https://marketplace-api.com/v1&#x27;,
+  accessToken: &#x27;новий-jwt-токен&#x27;
+});
+Безпека
+Зберігання токенів
+
+НЕ зберігайте токени в localStorage у веб-додатках
+Використовуйте httpOnly cookies для веб-додатків
+В мобільних додатках використовуйте безпечне сховище
+
+Обробка expired токенів
+typescriptimport axios from &#x27;axios&#x27;;
+
+// Перехоплювач для обробки 401 помилок
+axios.interceptors.response.use(
+  (response) =&gt; response,
+  async (error) =&gt; {
+    if (error.response?.status === 401) {
+      // Токен застарів, потрібно оновити
+      const newToken = await refreshToken();
+      // Повторити запит з новим токеном
+      error.config.headers.Authorization = `Bearer ${newToken}`;
+      return axios.request(error.config);
+    }
+    return Promise.reject(error);
+  }
+);
+Права доступу
+API підтримує різні рівні доступу:
+
+USER - базові операції читання
+MODERATOR - читання та модифікація контенту
+ADMIN - повний доступ до всіх операцій
+
+Перевіряйте права користувача перед викликом API методів.
+</code></div><span class="absolute top-1.5 end-3 !text-[11px] font-mono text-muted-foreground transition group-hover:opacity-0"></span><button type="button" aria-label="Copy code" title="Copy code" class="absolute top-2 end-2 p-2 hover:outline hover:outline-border/75 dark:hover:outline-border rounded-md text-sm text-muted-foreground transition opacity-0 group-hover:opacity-100"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></div></pre><hr class="my-10"/><div class="flex -mx-4 text-muted-foreground font-semibold justify-end mb-4"></div></div><div class="hidden xl:block"><aside class="sticky scrollbar top-8 lg:top-[--header-height] h-[calc(100vh-var(--header-height))] pt-[--padding-content-top] pb-[--padding-content-bottom] overflow-y-auto ps-1 text-sm"><div class="flex items-center gap-2 font-medium mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree"><path d="M21 12h-8"></path><path d="M21 6H8"></path><path d="M21 18h-8"></path><path d="M3 6v4c0 1.1.9 2 2 2h3"></path><path d="M3 10v6c0 1.1.9 2 2 2h3"></path></svg>On this page</div><div class="relative ms-2 ps-4"><div class="absolute inset-0 end-auto bg-border w-[2px]"></div><div class="absolute -start-px -translate-y-1 h-6 w-[4px] rounded bg-primary" style="top:0;opacity:0"></div><ul class="relative font-medium list-none space-y-2"><li class="truncate ps-0" title="Отримання токену"><a data-active="отримання-токену" aria-current="page" class="hover:text-accent-foreground text-muted-foreground active" href="/docs/authorization#отримання-токену" data-discover="true">Отримання токену</a><ul class="list-none ps-4 pt-2 space-y-2"><li class="truncate" title="Приклад запиту на авторизацію"><a data-active="приклад-запиту-на-авторизацію" aria-current="page" class="hover:text-accent-foreground text-muted-foreground active" href="/docs/authorization#приклад-запиту-на-авторизацію" data-discover="true">Приклад запиту на авторизацію</a></li></ul></li></ul></div></aside></div></div></main><!--/$--></div><script>window.__staticRouterHydrationData = JSON.parse("{\"loaderData\":{},\"actionData\":null,\"errors\":null}");</script></div>
+  <script>window.DATA={"mutations":[],"queries":[{"state":{"data":true,"dataUpdateCount":1,"dataUpdatedAt":1748656256041,"error":null,"errorUpdateCount":0,"errorUpdatedAt":0,"fetchFailureCount":0,"fetchFailureReason":null,"fetchMeta":null,"isInvalidated":false,"status":"success","fetchStatus":"idle"},"queryKey":["zudoku-initialize"],"queryHash":"[\"zudoku-initialize\"]"},{"state":{"dataUpdateCount":0,"dataUpdatedAt":0,"error":null,"errorUpdateCount":0,"errorUpdatedAt":0,"fetchFailureCount":0,"fetchFailureReason":null,"fetchMeta":null,"isInvalidated":false,"status":"pending","fetchStatus":"idle"},"queryKey":["zuplo-build-check",null,"/__zuplo/docs"],"queryHash":"[\"zuplo-build-check\",null,\"/__zuplo/docs\"]"},{"state":{"data":[],"dataUpdateCount":1,"dataUpdatedAt":1748656256044,"error":null,"errorUpdateCount":0,"errorUpdatedAt":0,"fetchFailureCount":0,"fetchFailureReason":null,"fetchMeta":null,"isInvalidated":false,"status":"success","fetchStatus":"idle"},"queryKey":["plugin-sidebar","/docs/authorization"],"queryHash":"[\"plugin-sidebar\",\"/docs/authorization\"]"},{"state":{"dataUpdateCount":0,"dataUpdatedAt":0,"error":null,"errorUpdateCount":0,"errorUpdatedAt":0,"fetchFailureCount":0,"fetchFailureReason":null,"fetchMeta":null,"isInvalidated":false,"status":"pending","fetchStatus":"idle"},"queryKey":["login-redirect"],"queryHash":"[\"login-redirect\"]"}]}</script></body>
+</html>
