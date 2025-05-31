@@ -1,12 +1,16 @@
 export default {
   title: "Marketplace API",
   description: "Документація API для торгової платформи",
-  basePath: "/marketplace-docs",
+  // Важно: указываем basePath с завершающим слешем
+  basePath: "/marketplace-docs/",
   openapi: {
     file: "./marketplace-api.yaml"
   },
   navigation: [
-    { label: "About", href: "/about" }
+    // Здесь можно использовать относительные ссылки — тогда zudoku подставит basePath автоматически
+    { label: "About", href: "about" },
+    { label: "Installation", href: "installation" },
+    { label: "Authorization", href: "authorization" }
   ],
   sidebar: {
     "/": [
