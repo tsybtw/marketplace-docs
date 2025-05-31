@@ -1,0 +1,83 @@
+---
+title: "Авторизація"
+description: "Налаштування автентифікації та безпеки API"
+---
+
+# Авторизація
+
+API використовує JWT Bearer токени для автентифікації користувачів.
+
+## Отримання токену
+
+Токен отримується після успішної авторизації користувача через систему автентифікації.
+
+### Приклад запиту на авторизацію
+
+```http
+POST /auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+Відповідь
+json{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+Використання токену
+В HTTP заголовках
+Додайте токен до заголовку Authorization:
+httpAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+В SDK
+typescriptimport { Configuration, ProductsApi } from 'marketplace-api-client';
+
+const config = new Configuration({
+  basePath: 'https://marketplace-api.com/v1',
+  accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+});
+
+const api = new ProductsApi(config);
+Динамічне оновлення токену
+typescript// Оновлення токену в існуючій конфігурації
+config.accessToken = 'новий-jwt-токен';
+
+// Або створення нової конфігурації
+const newConfig = new Configuration({
+  basePath: 'https://marketplace-api.com/v1',
+  accessToken: 'новий-jwt-токен'
+});
+Безпека
+Зберігання токенів
+
+НЕ зберігайте токени в localStorage у веб-додатках
+Використовуйте httpOnly cookies для веб-додатків
+В мобільних додатках використовуйте безпечне сховище
+
+Обробка expired токенів
+typescriptimport axios from 'axios';
+
+// Перехоплювач для обробки 401 помилок
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      // Токен застарів, потрібно оновити
+      const newToken = await refreshToken();
+      // Повторити запит з новим токеном
+      error.config.headers.Authorization = `Bearer ${newToken}`;
+      return axios.request(error.config);
+    }
+    return Promise.reject(error);
+  }
+);
+Права доступу
+API підтримує різні рівні доступу:
+
+USER - базові операції читання
+MODERATOR - читання та модифікація контенту
+ADMIN - повний доступ до всіх операцій
+
+Перевіряйте права користувача перед викликом API методів.

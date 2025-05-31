@@ -1,0 +1,370 @@
+openapi: 3.0.0
+info:
+  title: Marketplace API
+  version: 1.0.0
+  description: API для торгової платформи з продуктами та категоріями
+  contact:
+    name: Студент
+    email: student@example.com
+
+servers:
+  - url: https://marketplace-api.com/v1
+    description: Production server
+
+paths:
+  /categories:
+    get:
+      summary: Отримати список категорій
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: Список категорій успішно отримано
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        '500':
+          description: Внутрішня помилка сервера
+    post:
+      summary: Створити нову категорію
+      tags:
+        - Categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '201':
+          description: Категорію успішно створено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          description: Невірні дані запиту
+        '500':
+          description: Внутрішня помилка сервера
+
+  /categories/{categoryId}:
+    get:
+      summary: Отримати категорію за ID
+      tags:
+        - Categories
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: integer
+          description: ID категорії
+      responses:
+        '200':
+          description: Категорію знайдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          description: Категорію не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+    put:
+      summary: Оновити категорію
+      tags:
+        - Categories
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '200':
+          description: Категорію успішно оновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          description: Невірні дані запиту
+        '404':
+          description: Категорію не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+    delete:
+      summary: Видалити категорію
+      tags:
+        - Categories
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Категорію успішно видалено
+        '404':
+          description: Категорію не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+
+  /products:
+    get:
+      summary: Отримати список продуктів
+      tags:
+        - Products
+      parameters:
+        - in: query
+          name: categoryId
+          schema:
+            type: integer
+          description: Фільтр за ID категорії
+        - in: query
+          name: minPrice
+          schema:
+            type: number
+          description: Мінімальна ціна
+        - in: query
+          name: maxPrice
+          schema:
+            type: number
+          description: Максимальна ціна
+      responses:
+        '200':
+          description: Список продуктів успішно отримано
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Внутрішня помилка сервера
+    post:
+      summary: Створити новий продукт
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Продукт успішно створено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Невірні дані запиту
+        '500':
+          description: Внутрішня помилка сервера
+
+  /products/{productId}:
+    get:
+      summary: Отримати продукт за ID
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: ID продукту
+      responses:
+        '200':
+          description: Продукт знайдено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Продукт не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+    put:
+      summary: Оновити продукт
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Продукт успішно оновлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Невірні дані запиту
+        '404':
+          description: Продукт не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+    delete:
+      summary: Видалити продукт
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Продукт успішно видалено
+        '404':
+          description: Продукт не знайдено
+        '500':
+          description: Внутрішня помилка сервера
+
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Унікальний ідентифікатор категорії
+          example: 1
+        name:
+          type: string
+          description: Назва категорії
+          example: "Електроніка"
+        description:
+          type: string
+          description: Опис категорії
+          example: "Категорія для електронних товарів"
+        createdAt:
+          type: string
+          format: date-time
+          description: Дата створення
+        updatedAt:
+          type: string
+          format: date-time
+          description: Дата останнього оновлення
+      required:
+        - id
+        - name
+
+    CategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Назва категорії
+          example: "Електроніка"
+        description:
+          type: string
+          description: Опис категорії
+          example: "Категорія для електронних товарів"
+      required:
+        - name
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Унікальний ідентифікатор продукту
+          example: 1
+        name:
+          type: string
+          description: Назва продукту
+          example: "iPhone 14"
+        description:
+          type: string
+          description: Опис продукту
+          example: "Смартфон Apple iPhone 14 з екраном 6.1 дюйма"
+        price:
+          type: number
+          format: decimal
+          description: Ціна продукту
+          example: 999.99
+        categoryId:
+          type: integer
+          description: ID категорії, до якої належить продукт
+          example: 1
+        category:
+          $ref: '#/components/schemas/Category'
+        inStock:
+          type: boolean
+          description: Чи є продукт в наявності
+          example: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Дата створення
+        updatedAt:
+          type: string
+          format: date-time
+          description: Дата останнього оновлення
+      required:
+        - id
+        - name
+        - price
+        - categoryId
+
+    ProductInput:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Назва продукту
+          example: "iPhone 14"
+        description:
+          type: string
+          description: Опис продукту
+          example: "Смартфон Apple iPhone 14 з екраном 6.1 дюйма"
+        price:
+          type: number
+          format: decimal
+          description: Ціна продукту
+          example: 999.99
+        categoryId:
+          type: integer
+          description: ID категорії, до якої належить продукт
+          example: 1
+        inStock:
+          type: boolean
+          description: Чи є продукт в наявності
+          example: true
+      required:
+        - name
+        - price
+        - categoryId
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
