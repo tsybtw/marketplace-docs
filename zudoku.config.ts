@@ -1,6 +1,7 @@
 export default {
   title: "Marketplace API",
   description: "Документація API для торгової платформи",
+  basePath: "/marketplace-docs", // добавляем basePath для GitHub Pages
   openapi: {
     file: "./marketplace-api.yaml"
   },
